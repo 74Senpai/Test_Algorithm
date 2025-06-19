@@ -28,5 +28,3 @@ def threeSum(self, nums: list[int]) -> list[list[int]]:
                 k_point = len_nums - 1
                 
         return threeSum
-
-print(threeSum(None, case))
