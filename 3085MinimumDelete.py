@@ -1,20 +1,19 @@
-def minimumDeletions(self, word: str, k: int) -> int:
-    map_ch = {}
-    for ch in word:
-        if ch in map_ch:
-            map_ch[ch] += 1
-        else:
-            map_ch[ch] = 1
-    if len(map_ch) == 1 or k >= len(word):
-        return 0
-    k_word = word[k]
-    delete = 0
-    for key in map_ch:
-        if map_ch[key] < map_ch[k_word]:
-            delete += map_ch[key]
-        elif map_ch[key] > map_ch[k_word] + k:
-            delete += map_ch[key] - map_ch[k_word] - k
-        
-    return delete
+class V1:
+    def minimumDeletions(self, word: str, k: int) -> int:
+        map_ch = {}
+        for ch in word:
+            if ch in map_ch:
+                map_ch[ch] += 1
+            else:
+                map_ch[ch] = 1
+        del_ = 10**5
+        for x in map_ch:
+            delete = 0
+            for key in map_ch:
+                if map_ch[key] < map_ch[x]:
+                    delete += map_ch[key]
+                elif map_ch[key] > map_ch[x] + k:
+                    delete += map_ch[key] - map_ch[x] - k
+            del_ = min(del_, delete)
+        return del_
 
-print(minimumDeletions(None, "dabdcbdcdcd", 2))
