@@ -1,4 +1,4 @@
-def divideString(self, s: str, k: int, fill: str) -> List[str]:
+def divideString(self, s: str, k: int, fill: str) -> list[str]:
         need_fill = k - len(s) % k
         if need_fill != k and need_fill != 0:
             s = s + (fill * need_fill)
