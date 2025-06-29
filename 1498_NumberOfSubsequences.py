@@ -9,10 +9,10 @@ def numSubseq(self, nums: list[int], target: int) -> int:
             break
         while x >= i:
             if nums[x] + nums[i] <= target:
-                result = (result + (2**(x - i))) % MOD
+                result += 2**(x - i)
                 break
             x -= 1
             
-    return result 
+    return result % MOD
 
 print(numSubseq(None, [2,3,3,4,6,7], 12))
