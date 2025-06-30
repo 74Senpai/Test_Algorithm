@@ -35,4 +35,19 @@ class Ver2:
 
         return longest_sub
     
-print(Ver2().findLHS([1,3,2,2,5,2,3,7]))
+class Ver3:
+    # hash table
+    def findLHS(self, nums: list[int]) -> int:
+        map_num = {}
+        for i in nums:
+            map_num[i] = map_num.get(i, 0) + 1
+
+        longest_sub = 0
+        sorted_keys = sorted(map_num)
+        for key_a, key_b in zip(sorted_keys[:-1], sorted_keys[1:]):
+            if key_b - key_a == 1:
+                longest_sub = max(longest_sub, map_num[key_a] + map_num[key_b]) 
+
+        return longest_sub
+    
+print(Ver3().findLHS([1,3,2,2,5,2,3,7]))
